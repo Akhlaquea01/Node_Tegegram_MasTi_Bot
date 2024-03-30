@@ -3,3 +3,10 @@
 
 [functions]
   function = "netlify/functions/index.js"
+
+[functions]
+  [functions.startApplication]
+  external_node_modules = [
+    "telegraf",
+    "mongoose"
+  ]
