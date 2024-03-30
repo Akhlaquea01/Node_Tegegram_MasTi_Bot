@@ -18,6 +18,7 @@
   "type": "module",
   "dependencies": {
     "mongoose": "^8.2.4",
+    "netlify": "^13.1.14",
     "openai": "^4.30.0",
     "telegraf": "^4.16.3"
   }
