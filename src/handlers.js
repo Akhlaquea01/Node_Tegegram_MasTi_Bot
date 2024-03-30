@@ -1,6 +1,6 @@
 import { getEventsForToday } from "./database.js";
 
-export async function handleGenerateCommand(ctx) {
+export async function handleSummaryCommand(ctx) {
     const from = ctx.update.message.from;
     const waitingMessage = await ctx.reply(`Hey! Please wait for response...`);
     try {

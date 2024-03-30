@@ -1,6 +1,6 @@
 import { Telegraf } from "telegraf";
 import { message } from "telegraf/filters";
-import { handleGenerateCommand } from "./handlers.js";
+import { handleSummaryCommand } from "./handlers.js";
 import { userModel, eventModel } from "./models/index.js";
 
 const bot = new Telegraf(process.env.TELEGRAM_BOT_API);
@@ -25,7 +25,7 @@ export async function launchBot() {
         }
     });
 
-    bot.command('summary', handleGenerateCommand);
+    bot.command('summary', handleSummaryCommand);
 
     bot.on(message('text'), async (ctx) => {
         const from = ctx.update.message.from;
