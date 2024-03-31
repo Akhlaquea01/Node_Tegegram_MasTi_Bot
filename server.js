@@ -4,6 +4,7 @@ import userModel from './src/models/User.js';
 import eventModel from './src/models/Event.js';
 import connectDb from "./src/config/db.js";
 import OpenAI from 'openai';
+import ollama from 'ollama';
 
 const bot = new Telegraf(process.env.TELEGRAM_BOT_API);
 const openai = new OpenAI({
@@ -55,7 +56,7 @@ async function aiChatCompletion(userEvents) {
     }
 }
 
-async function handleGenerateCommand(ctx) {
+async function handleSummaryCommand(ctx) {
     const from = ctx.update.message.from;
     const waitingMessage = await ctx.reply(`Hey! Please wait for response...`);
     try {
@@ -76,7 +77,7 @@ async function handleGenerateCommand(ctx) {
         // Send response
         await ctx.deleteMessage(waitingMessage.message_id);
         // await ctx.reply(chatCompletion.choices[0].message.content);
-        await ctx.reply(events);
+        await ctx.reply(events.map(el => el.text).join('\n'));
     } catch (error) {
         await ctx.deleteMessage(waitingMessage.message_id);
         console.log(error);
@@ -102,16 +103,24 @@ bot.start(async (ctx) => {
     }
 });
 
-bot.command('generate', handleGenerateCommand);
+bot.command('summary', handleSummaryCommand);
 
 bot.on(message('text'), async (ctx) => {
     const from = ctx.update.message.from;
     const message = ctx.update.message.text;
+    const waitingMessage = await ctx.reply(`Hey! Please wait for response...`);
     try {
         await eventModel.create({ text: message, tgId: from.id });
-        await ctx.reply("Thanks for using this bot");
+        const response = await ollama.chat({
+            model: 'llama2',
+            messages: [{ role: 'user', content: message }],
+        });
+        // console.log(response.message.content)
+        await ctx.deleteMessage(waitingMessage.message_id);
+        await ctx.reply(response.message.content);
     } catch (error) {
         console.log(error);
+        await ctx.deleteMessage(waitingMessage.message_id);
         await ctx.reply(`Some issue there`);
     }
 });
