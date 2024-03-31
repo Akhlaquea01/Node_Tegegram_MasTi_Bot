@@ -1,9 +1,2 @@
 [build]
-  command = "npm run build"
-
-[functions]
-  [functions.startApplication]
-  external_node_modules = [
-    "telegraf",
-    "mongoose"
-  ]
+  functions = "functions"
