@@ -1,5 +1,7 @@
 ![MasTi Bot](MasTi_Bot.png)
 
+search for bot on telegram : @iam_MasTi_Bot
+
 1. **mongoose**: Mongoose is a powerful MongoDB object modeling tool crafted for asynchronous environments like Node.js. It simplifies interaction with MongoDB databases by providing a schema-based solution, allowing easy organization and manipulation of application data.
 
 2. **ollama**: Ollama is an open-source library designed to generate AI-generated responses based on input strings. It's a versatile tool that can be used for various purposes, from generating random text to creating dynamic responses in applications.
