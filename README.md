@@ -1,4 +1,4 @@
-Absolutely, here's a refined version:
+![MasTi Bot](MasTi_Bot.png)
 
 1. **mongoose**: Mongoose is a powerful MongoDB object modeling tool crafted for asynchronous environments like Node.js. It simplifies interaction with MongoDB databases by providing a schema-based solution, allowing easy organization and manipulation of application data.
 
