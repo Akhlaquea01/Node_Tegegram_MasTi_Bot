@@ -19,9 +19,7 @@
   "dependencies": {
     "express": "^4.19.2",
     "mongoose": "^8.2.4",
-    "netlify": "^13.1.14",
-    "netlify-cli": "^17.21.1",
-    "netlify-lambda": "^2.0.16",
+    "ollama": "^0.5.0",
     "openai": "^4.30.0",
     "serverless-http": "^3.2.0",
     "telegraf": "^4.16.3"
